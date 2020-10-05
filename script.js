@@ -9,27 +9,28 @@ function passwordOptions() {
 
   if (count < 8) {
     alert("Password must be at least 8 characters.");
+    return;
   }
-  else if (count > 128) {
+  if (count > 128) {
     alert("Password is too long. Must be less than 128 characters.");
+    return;
   }
-  else if (isNaN(count) === true) {
+  if (isNaN(count) === true) {
     alert("I'm sorry, you can only input numbers in this field.");
+    return;
   }
-  else {return;}
 
-  var includeNumbers = confirm();
-  var includeLowercase = confirm();
-  var includeUppercase = confirm();
-  var includeSpecialCharacters = confirm();
+  var includeNumbers = confirm("Click OK to use numbers.");
+  var includeLowercase = confirm("Click OK to use lowercase letters.");
+  var includeUppercase = confirm("Click OK to use uppercase letters.");
+  var includeSpecialCharacters = confirm("Click OK to use special characters.");
 }
 
-function writePassword() {
-
+function generatePassword() {
+  var options = passwordOptions();
 }
 
-
-// Assignment Code
+// variable for the generate button on the html page.
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
