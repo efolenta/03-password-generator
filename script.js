@@ -4,18 +4,18 @@ var lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', '
 var uppercaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var specialCharacters = ['@', '%', '+', '\\', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.'];
 
-function passwordOptions() {
-  var count = parseInt(prompt("How long do you want your password to be? (Between: 8 & 128)"));
+function getOptions() {
+  var length = parseInt(prompt("How long do you want your password to be? (Between: 8 & 128)"));
 
-  if (count < 8) {
+  if (length < 8) {
     alert("Password must be at least 8 characters.");
     return;
   }
-  if (count > 128) {
+  if (length > 128) {
     alert("Password is too long. Must be less than 128 characters.");
     return;
   }
-  if (isNaN(count) === true) {
+  if (isNaN(length) === true) {
     alert("I'm sorry, you can only input numbers in this field.");
     return;
   }
@@ -24,10 +24,21 @@ function passwordOptions() {
   var includeLowercase = confirm("Click OK to use lowercase letters.");
   var includeUppercase = confirm("Click OK to use uppercase letters.");
   var includeSpecialCharacters = confirm("Click OK to use special characters.");
+
+  // Object to store user input
+  var passwordOptions = {
+    length: length,
+    includeNumbers: includeNumbers,
+    includeLowercase: includeLowercase,
+    includeUppercase: includeUppercase,
+    includeSpecialCharacters: includeSpecialCharacters
+  };
+
+  return passwordOptions;
 }
 
 function generatePassword() {
-  var options = passwordOptions();
+  var options = getOptions();
 }
 
 // variable for the generate button on the html page.
